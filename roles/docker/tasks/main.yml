@@ -1,0 +1,34 @@
+---
+# tasks file for docker
+
+- name: Removing unwanted packages
+  yum: 
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - ['docker','docker-client','docker-common','docker-latest']
+    - ['docker-latest-rotate','docker-rotate','docker-linux','docker-engline-selinux','docker-engine']
+
+- name: Installing depedent packages
+  yum:
+    name: "{{ item }}"
+    state: "installed"
+  with_items:
+    - ['yum-utils','device-mapper-persistent-data','lvm2']
+
+
+- name: Copying conf file
+  git_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: /etc/yum.repos.d/docker.repo
+
+- name: Installing docker-ce
+  yum:
+    name: "docker-ce"
+    state: "installed"
+  notify: restart
+
+
+
+
+
