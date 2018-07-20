@@ -28,7 +28,15 @@
     state: "installed"
   notify: restart
 
+- name: checking service 
+  shell: |
+       ps aux | grep -i docker
+  register: results
 
+- name: Jira Deployement using docker
+  shell: |
+        docker run --detach --publish 8080:8080 cptactionhank/atlassian-jira:latest
+  when: ( 'docker' in results.stdout )
 
 
 
