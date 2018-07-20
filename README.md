@@ -6,4 +6,4 @@
 
 sleep 3
 
-ansible-pull -i inventory -U https://github.com/praveensams/jira  wrap.yml -e 'host_name=localhost playbook=jira server=server_name'
+ansible-pull -i inventory -U https://github.com/praveensams/docker  wrap.yml -e 'host_name=localhost playbook=jira server=server_name'
