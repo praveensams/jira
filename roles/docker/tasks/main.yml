@@ -18,7 +18,7 @@
 
 
 - name: Copying conf file
-  git_url:
+  get_url:
     url: "https://download.docker.com/linux/centos/docker-ce.repo"
     dest: "/etc/yum.repos.d/docker.repo"
 
