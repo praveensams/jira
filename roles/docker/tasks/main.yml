@@ -28,6 +28,11 @@
     state: "installed"
   notify: restart
 
+- name: starting service
+  service:
+    name: "docker"
+    state: "restarted"
+
 - name: checking service 
   shell: |
        ps aux | grep -i docker
