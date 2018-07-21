@@ -20,10 +20,9 @@ sleep 3
 
 ( netstat -ntpl | grep 8080 ) || { echo "Port 8080 is not running , check for existing service binding to port 8080" ; exit 6; } 
 
-exec 1>&3-
 
 
-tput clear
+clear
 
 echo "
 #################################################################
@@ -36,3 +35,4 @@ echo "
 #                                                               #
 #################################################################
 "
+exec 1>&3-
