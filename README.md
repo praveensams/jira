@@ -6,7 +6,7 @@
 
 exec 3>&1 && exec 3> /dev/null
 
-( netstat -ntpl | grep 8080 ) && { echo "Please free 8080 port " ; exit 6 ; }
+( netstat -ntpl | grep 8080 ) 1>&3 && { echo "Please free 8080 port " ; exit 6 ; }
 
 ( grep -i 'centos' /etc/redhat-release ) 1>&3 || { echo "Please use CentOS" ; exit 6; }
 
