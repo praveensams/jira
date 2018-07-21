@@ -1,6 +1,6 @@
 # jira installation 
 
-# installing docker (centos)
+# installing docker (centOS)
 
 
 [ $(id -u) -eq 0 ] || { echo 'try with root'; exit 6; }
