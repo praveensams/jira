@@ -11,7 +11,7 @@ exec 3>&1 && exec 3> /dev/null
 
 ( grep -i 'centos' /etc/redhat-release ) 1>&3 || { echo "Please use CentOS" ; exit 6; }
 
- [ $(ps aux | grep -i docker | wc -l ) -gt 1 ] && { docker -qa | xargs docker rm ; }
+ [ $(ps aux | grep -i docker | wc -l ) -gt 1 ] && { docker ps -qa | xargs docker rm ; }
 
 ( rpm -qa | grep -i epel-release )  1>&3 || { yum install epel-release -y ; sleep 3 ; yum install ansible -y ; }
 
