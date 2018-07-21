@@ -2,6 +2,7 @@
 
 # installing docker (centos)
 
+
 [ $(id -u) -eq 0 ] || { echo 'try with root'; exit 6; }
 
 exec 3>&1 && exec 3> /dev/null
@@ -9,6 +10,8 @@ exec 3>&1 && exec 3> /dev/null
 ( netstat -ntpl | grep 8080 ) 1>&3 && { echo "Please free 8080 port " ; exit 6 ; }
 
 ( grep -i 'centos' /etc/redhat-release ) 1>&3 || { echo "Please use CentOS" ; exit 6; }
+
+( ps aux | grep -i docker ) && { docker -qa | xargs docker rm ; }
 
 ( rpm -qa | grep -i epel-release )  1>&3 || { yum install epel-release -y ; sleep 3 ; yum install ansible -y ; }
 
